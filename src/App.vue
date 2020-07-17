@@ -4,11 +4,6 @@
             <h1>Pokémon Tech Challenge</h1>
             <h5>Autor: Marcos Righi Brasil</h5>
         </div>
-        <div></div>
-        <!-- <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
-        </div> -->
         <router-view/>
     </div>
 </template>
