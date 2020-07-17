@@ -48,7 +48,7 @@
         </div>
         <pokemon-modal
             :show-modal="showPokemonModal"
-            :pokemon-url="selectedPokemonUrl"
+            :pokemon="selectedPokemon"
         />
     </div>
 </template>
@@ -73,12 +73,12 @@ export default {
         return {
             showAbilities: false,
             showPokemonModal: false,
-            selectedPokemonUrl: null
+            selectedPokemon: null
         }
     },
     methods: {
         openPokemonModal(item) {
-            this.selectedPokemonUrl = item.url
+            this.selectedPokemon = item
             EventBus.$emit("show-pokemon-modal", true)
         }
     }

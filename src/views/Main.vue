@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import axios from "axios"
 import Generation from "./Generation"
 
 export default {
@@ -59,7 +58,7 @@ export default {
     },
     methods: {
         getGenerations() {
-            axios.get("https://pokeapi.co/api/v2/generation")
+            this.$api.get("/generation")
                 .then(response => {
                     console.log(response)
                     this.generations = response.data.results
@@ -71,7 +70,7 @@ export default {
             this.getGenerationData(generation.url)
         },
         getGenerationData(url) {
-            axios.get(url)
+            this.$api.get(url)
                 .then(response => {
                     console.log(response)
                     this.generationData = response.data
