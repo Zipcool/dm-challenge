@@ -1,21 +1,22 @@
 <template>
     <div>
         <div class="row">
+            <div class="col-md-3">
+                <collapsable-data-column
+                    id="pokemon_species"
+                    title="Pokémons"
+                    :items-array="generationData.pokemon_species"
+                    :interactable-data="true"
+                    @data-item-clicked="openPokemonModal"
+                />
+            </div>
+            <hr>
             <div class="col-md-2">
                 <collapsable-data-column
                     id="version_groups"
                     title="Jogos desta geração"
                     :items-array="generationData.version_groups"
                     name-separator=" | "
-                />
-            </div>
-            <hr>
-            <div class="col-md-3">
-                <collapsable-data-column
-                    id="abilities"
-                    title="Habilidades"
-                    empty-message="Nenhuma habilidade nesta geração"
-                    :items-array="generationData.abilities"
                 />
             </div>
             <hr>
@@ -28,17 +29,16 @@
                 />
             </div>
             <hr>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <collapsable-data-column
-                    id="pokemon_species"
-                    title="Espécies de Pokémon"
-                    :items-array="generationData.pokemon_species"
-                    :interactable-data="true"
-                    @data-item-clicked="openPokemonModal"
+                    id="abilities"
+                    title="Habilidades"
+                    empty-message="Nenhuma habilidade nesta geração"
+                    :items-array="generationData.abilities"
                 />
             </div>
             <hr>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <collapsable-data-column
                     id="moves"
                     title="Movimentos"
