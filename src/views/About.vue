@@ -8,11 +8,11 @@
                 :key="index"
                 @click="selectGeneration(generation)"
             >
-                {{ generation.name }}
+                {{ generation.name | handleGenerationName }}
             </button>
         </div>
         <div v-if="selectedGeneration">
-            <h2>Selecionada: {{ selectedGeneration.name }}</h2>
+            <h2>{{ selectedGeneration.name | handleGenerationName }}</h2>
             <generation
                 v-if="generationData"
                 :generation-data="generationData"
@@ -38,6 +38,17 @@ export default {
     },
     created() {
         this.getGenerations()
+    },
+    filters: {
+        handleGenerationName(value) {
+            if (!value) {
+                return ""
+            }
+
+            const genNumber = value.toString().split("-")[1].toUpperCase()
+
+            return "Geração " + genNumber
+        }
     },
     methods: {
         getGenerations() {

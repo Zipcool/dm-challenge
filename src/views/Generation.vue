@@ -1,46 +1,56 @@
 <template>
     <div>
         <div>
-            <p>Região: {{ generationData.main_region.name }}</p>
+            <p>Região: {{ generationData.main_region.name | handleName }}</p>
         </div>
         <hr>
         <div>
-            <button @click="showAbilities = !showAbilities">{{ showAbilities ? "Esconder habilidades" : "Mostrar habilidades"}}</button>
-            <div v-show="showAbilities">
-                <template
-                    v-if="generationData.abilities.length > 0"
-                >
-                    <div
-                        v-for="(ability, index) in generationData.abilities"
-                        :key="index"
-                    >{{ ability }}</div>
-                </template>
-                <p v-else>Nenhuma habilidade nesta geração</p>
-            </div>
+            <organized-data
+                title="Jogos desta geração"
+                :values-array="generationData.version_groups"
+                name-separator=" | "
+            />
         </div>
         <hr>
         <div>
-            <label>Tipos:</label>
-            <p>{{ generationData.types }}</p>
+            <organized-data
+                title="Habilidades"
+                empty-message="Nenhuma habilidade nesta geração"
+                :values-array="generationData.abilities"
+            />
         </div>
         <hr>
         <div>
-            <label>Espécies de Pokémon:</label>
-            <p>{{ generationData.pokemon_species }}</p>
+            <organized-data
+                title="Tipos"
+                empty-message="Nenhum tipo nesta geração"
+                :values-array="generationData.types"
+            />
         </div>
+        <hr>
         <div>
-            <label>Moves:</label>
-            <p>{{ generationData.abilities }}</p>
+            <organized-data
+                title="Espécies de Pokémon"
+                :values-array="generationData.pokemon_species"
+            />
         </div>
+        <hr>
         <div>
-            <label>Versões:</label>
-            <p>{{ generationData.version_groups }}</p>
+            <organized-data
+                title="Movimentos"
+                :values-array="generationData.moves"
+            />
         </div>
     </div>
 </template>
 
 <script>
+import OrganizedData from "../components/OrganizedData"
+
 export default {
+    components: {
+        OrganizedData
+    },
     props: {
         generationData: {
             type: Object,
