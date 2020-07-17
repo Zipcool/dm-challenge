@@ -32,3 +32,11 @@ export default {
     }
 }
 </script>
+
+<style lang="less" scoped>
+.table {
+    th, td {
+        padding: 6px
+    }
+}
+</style>

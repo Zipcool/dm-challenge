@@ -166,6 +166,12 @@ export default {
     max-width: 800px;
 }
 
+.modal-body {
+    p {
+        margin-bottom: 8px;
+    }
+}
+
 .modal-mask {
     position: fixed;
     z-index: 9998;
