@@ -46,15 +46,22 @@
                 />
             </div>
         </div>
+        <pokemon-modal
+            :show-modal="showPokemonModal"
+            :pokemon-url="selectedPokemonUrl"
+        />
     </div>
 </template>
 
 <script>
 import CollapsableDataColumn from "../components/CollapsableDataColumn"
+import PokemonModal from "../components/PokemonModal"
+import { EventBus } from "@/plugins/event-bus.js"
 
 export default {
     components: {
-        CollapsableDataColumn
+        CollapsableDataColumn,
+        PokemonModal
     },
     props: {
         generationData: {
@@ -64,12 +71,15 @@ export default {
     },
     data() {
         return {
-            showAbilities: false
+            showAbilities: false,
+            showPokemonModal: false,
+            selectedPokemonUrl: null
         }
     },
     methods: {
         openPokemonModal(item) {
-            console.log(["Let's open this modal:", item])
+            this.selectedPokemonUrl = item.url
+            EventBus.$emit("show-pokemon-modal", true)
         }
     }
 }
