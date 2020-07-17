@@ -16,16 +16,16 @@ module.exports = {
     rules: {
         "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
         "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-        "curly": ["error", "all"],
-        "indent": ["error", 4, { 
-            "SwitchCase": 1 
+        curly: ["error", "all"],
+        indent: ["error", 4, {
+            SwitchCase: 1
         }],
-        "keyword-spacing": ["error", { 
-            "before": true, 
-            "after": true 
+        "keyword-spacing": ["error", {
+            before: true,
+            after: true
         }],
-        "quotes": ["error", "double"],
-        "semi": ["error", "never"],
+        quotes: ["error", "double"],
+        semi: ["error", "never"],
         "space-before-function-paren": ["error", "never"],
         "vue/html-indent": ["error", 4]
     },
