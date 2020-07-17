@@ -14,39 +14,39 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-4 text-left">
-                                        <h5>Dados da Espécie</h5>
+                                        <h5>Species Data</h5>
                                         <p v-if="pokemonSpecies.evolves_from_species">
-                                            Evolves from: {{ pokemonSpecies.evolves_from_species.name | handleName }}
+                                            <strong>Evolves from:</strong> {{ pokemonSpecies.evolves_from_species.name | handleName }}
                                         </p>
                                         <p v-if="pokemonSpecies.habitat">
-                                            Habitat: {{ pokemonSpecies.habitat.name | handleName }}
+                                            <strong>Habitat:</strong> {{ pokemonSpecies.habitat.name | handleName }}
                                         </p>
                                         <p v-if="pokemonSpecies.color">
-                                            Color: {{ pokemonSpecies.color.name | handleName }}
+                                            <strong>Color:</strong> {{ pokemonSpecies.color.name | handleName }}
                                         </p>
                                         <p v-if="pokemonSpecies.shape">
-                                            Shape: {{ pokemonSpecies.shape.name | handleName }}
+                                            <strong>Shape:</strong> {{ pokemonSpecies.shape.name | handleName }}
                                         </p>
                                         <p v-if="pokemonSpecies.growth_rate">
-                                            Growth rate: {{ pokemonSpecies.growth_rate.name | handleName }}
+                                            <strong>Growth rate:</strong> {{ pokemonSpecies.growth_rate.name | handleName }}
                                         </p>
                                         <p v-if="pokemonSpecies.genera">
-                                            Genus: {{ pokemonSpecies.genera[7].genus }}
+                                            <strong>Genus:</strong> {{ pokemonSpecies.genera[7].genus }}
                                         </p>
                                     </div>
                                     <div class="col-md-4">
-                                        <h5>Dados do Pokémon</h5>
+                                        <h5>Pokémon Data</h5>
                                         <p v-if="pokemonData.base_experience">
-                                            Base experience: {{ pokemonData.base_experience }}
+                                            <strong>Base experience:</strong> {{ pokemonData.base_experience }}
                                         </p>
                                         <p v-if="pokemonData.height">
-                                            Height: {{ pokemonData.height }}
+                                            <strong>Height:</strong> {{ pokemonData.height }}
                                         </p>
                                         <p v-if="pokemonData.weight">
-                                            Weight: {{ pokemonData.weight }}
+                                            <strong>Weight:</strong> {{ pokemonData.weight }}
                                         </p>
                                         <p v-if="pokemonData.types">
-                                            Types: {{ pokemonTypes | handleName(", ") }}
+                                            <strong>Types:</strong> {{ pokemonTypes | handleName(", ") }}
                                         </p>
                                     </div>
                                     <div class="col-md-4">
@@ -66,10 +66,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <pokemon-stats-table :pokemon-stats="pokemonData.stats" />
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" @click="setShowModal(false)">Fechar</button>
                             </div>
+                        </div>
+                        <div
+                            v-else
+                            class="loading-banner"
+                        >
+                            <h2>Carregando dados...</h2>
                         </div>
                     </div>
                 </div>
@@ -80,8 +87,12 @@
 
 <script>
 import { EventBus } from "@/plugins/event-bus.js"
+import PokemonStatsTable from "./PokemonStatsTable"
 
 export default {
+    components: {
+        PokemonStatsTable
+    },
     props: {
         pokemon: {
             type: Object,
@@ -170,5 +181,11 @@ export default {
 .modal-wrapper {
     display: table-cell;
     vertical-align: middle;
+}
+
+.loading-banner {
+    color: white;
+    text-shadow: 2px 2px black;
+    z-index: 9999;
 }
 </style>
