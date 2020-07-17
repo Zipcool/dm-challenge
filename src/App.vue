@@ -1,22 +1,27 @@
 <template>
     <div id="app">
-        <h1>Pokémon - Delivery Much Challenge</h1>
-        <h4>por Marcos Righi Brasil</h4>
-        <div id="nav">
+        <div class="title-banner">
+            <h1>Pokémon Tech Challenge</h1>
+            <h5>Autor: Marcos Righi Brasil</h5>
+        </div>
+        <div></div>
+        <!-- <div id="nav">
             <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link>
-        </div>
+        </div> -->
         <router-view/>
     </div>
 </template>
 
 <style lang="less">
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+
+    padding: 20px;
 }
 
 #nav {
@@ -34,10 +39,18 @@
 </style>
 
 <style lang="less" scoped>
-h1 {
-    margin-bottom: 10px;
+.title-banner {
+    padding: 10px;
+    background-color: #d2d2d2;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    h1 {
+        margin: 0;
+    }
+    h5 {
+        margin: 5px 0 0 0;
+    }
 }
-h4 {
-    margin-top: 0;
-}
+
 </style>

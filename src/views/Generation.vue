@@ -1,45 +1,48 @@
 <template>
     <div>
-        <div>
-            <p>Região: {{ generationData.main_region.name | handleName }}</p>
-        </div>
-        <hr>
-        <div>
-            <organized-data
-                title="Jogos desta geração"
-                :values-array="generationData.version_groups"
-                name-separator=" | "
-            />
-        </div>
-        <hr>
-        <div>
-            <organized-data
-                title="Habilidades"
-                empty-message="Nenhuma habilidade nesta geração"
-                :values-array="generationData.abilities"
-            />
-        </div>
-        <hr>
-        <div>
-            <organized-data
-                title="Tipos"
-                empty-message="Nenhum tipo nesta geração"
-                :values-array="generationData.types"
-            />
-        </div>
-        <hr>
-        <div>
-            <organized-data
-                title="Espécies de Pokémon"
-                :values-array="generationData.pokemon_species"
-            />
-        </div>
-        <hr>
-        <div>
-            <organized-data
-                title="Movimentos"
-                :values-array="generationData.moves"
-            />
+        <div class="row">
+            <div class="col-md-2">
+                <organized-data
+                    id="version_groups"
+                    title="Jogos desta geração"
+                    :values-array="generationData.version_groups"
+                    name-separator=" | "
+                />
+            </div>
+            <hr>
+            <div class="col-md-3">
+                <organized-data
+                    id="abilities"
+                    title="Habilidades"
+                    empty-message="Nenhuma habilidade nesta geração"
+                    :values-array="generationData.abilities"
+                />
+            </div>
+            <hr>
+            <div class="col-md-2">
+                <organized-data
+                    id="types"
+                    title="Tipos introduzidos"
+                    empty-message="Nenhum tipo foi introduzido nesta geração"
+                    :values-array="generationData.types"
+                />
+            </div>
+            <hr>
+            <div class="col-md-3">
+                <organized-data
+                    id="pokemon_species"
+                    title="Espécies de Pokémon"
+                    :values-array="generationData.pokemon_species"
+                />
+            </div>
+            <hr>
+            <div class="col-md-2">
+                <organized-data
+                    id="moves"
+                    title="Movimentos"
+                    :values-array="generationData.moves"
+                />
+            </div>
         </div>
     </div>
 </template>

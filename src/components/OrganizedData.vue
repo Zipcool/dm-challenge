@@ -1,7 +1,15 @@
 <template>
     <div>
-        <button @click="showData = !showData">{{ title }} ({{ valuesArray.length }})</button>
-        <div v-show="showData">
+        <div class="form-group">
+            <button
+                class="btn btn-success category-button"
+                data-toggle="collapse"
+                :data-target="'#' + id"
+            >
+                {{ title }} ({{ valuesArray.length }})
+            </button>
+        </div>
+        <div :id="id" class="collapse">
             <template
                 v-if="!isEmpty(valuesArray)"
             >
@@ -22,6 +30,10 @@ import { isEmpty } from "lodash"
 
 export default {
     props: {
+        id: {
+            type: String,
+            required: true
+        },
         title: {
             type: String,
             default: "Título"
@@ -54,6 +66,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="less" scoped>
+.category-button {
+    width: 100%;
+}
 </style>

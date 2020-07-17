@@ -1,22 +1,29 @@
 <template>
     <div class="about">
-        <h2>Selecione uma geração:</h2>
-        <hr>
-        <div>
+        <h5 class="form-group">Selecione uma geração Pokémon abaixo para revelar mais informações:</h5>
+        <div class="btn-group form-group" role="group" aria-label="Seletor de gerações">
             <button
                 v-for="(generation, index) in generations"
+                class="btn btn-outline-primary"
                 :key="index"
                 @click="selectGeneration(generation)"
             >
                 {{ generation.name | handleGenerationName }}
             </button>
         </div>
-        <div v-if="selectedGeneration">
+        <div
+            v-if="selectedGeneration"
+            class="gen-panel"
+        >
             <h2>{{ selectedGeneration.name | handleGenerationName }}</h2>
-            <generation
-                v-if="generationData"
-                :generation-data="generationData"
-            />
+            <p>Região: {{ generationData.main_region.name | handleName }}</p>
+            <hr>
+            <div class="gen-panel__data">
+                <generation
+                    v-if="generationData"
+                    :generation-data="generationData"
+                />
+            </div>
         </div>
     </div>
 </template>
@@ -73,3 +80,29 @@ export default {
     }
 }
 </script>
+
+<style lang="less" scoped>
+.gen-panel {
+    min-height: calc(100vh - 271px);
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid #a6acb1;
+    padding: 5px;
+    border-radius: 10px;
+
+    h2 {
+        margin: 0 0 5px 0;
+    }
+    p {
+        margin: 0;
+    }
+    hr {
+        border-top: 5px solid #e8eaeb;
+        margin: 10px -5px;
+    }
+
+    &__data {
+        padding: 10px 20px;
+    }
+}
+</style>
