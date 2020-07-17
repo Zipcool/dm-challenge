@@ -16,7 +16,7 @@
             class="gen-panel"
         >
             <h2>{{ selectedGeneration.name | handleGenerationName }}</h2>
-            <p>Região: {{ generationData.main_region.name | handleName }}</p>
+            <p v-if="generationData">Região: {{ generationData.main_region.name | handleName }}</p>
             <hr>
             <div class="gen-panel__data">
                 <generation

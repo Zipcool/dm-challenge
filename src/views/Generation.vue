@@ -2,45 +2,47 @@
     <div>
         <div class="row">
             <div class="col-md-2">
-                <organized-data
+                <collapsable-data-column
                     id="version_groups"
                     title="Jogos desta geração"
-                    :values-array="generationData.version_groups"
+                    :items-array="generationData.version_groups"
                     name-separator=" | "
                 />
             </div>
             <hr>
             <div class="col-md-3">
-                <organized-data
+                <collapsable-data-column
                     id="abilities"
                     title="Habilidades"
                     empty-message="Nenhuma habilidade nesta geração"
-                    :values-array="generationData.abilities"
+                    :items-array="generationData.abilities"
                 />
             </div>
             <hr>
             <div class="col-md-2">
-                <organized-data
+                <collapsable-data-column
                     id="types"
                     title="Tipos introduzidos"
                     empty-message="Nenhum tipo foi introduzido nesta geração"
-                    :values-array="generationData.types"
+                    :items-array="generationData.types"
                 />
             </div>
             <hr>
             <div class="col-md-3">
-                <organized-data
+                <collapsable-data-column
                     id="pokemon_species"
                     title="Espécies de Pokémon"
-                    :values-array="generationData.pokemon_species"
+                    :items-array="generationData.pokemon_species"
+                    :interactable-data="true"
+                    @data-item-clicked="openPokemonModal"
                 />
             </div>
             <hr>
             <div class="col-md-2">
-                <organized-data
+                <collapsable-data-column
                     id="moves"
                     title="Movimentos"
-                    :values-array="generationData.moves"
+                    :items-array="generationData.moves"
                 />
             </div>
         </div>
@@ -48,11 +50,11 @@
 </template>
 
 <script>
-import OrganizedData from "../components/OrganizedData"
+import CollapsableDataColumn from "../components/CollapsableDataColumn"
 
 export default {
     components: {
-        OrganizedData
+        CollapsableDataColumn
     },
     props: {
         generationData: {
@@ -65,7 +67,10 @@ export default {
             showAbilities: false
         }
     },
-    created() {
+    methods: {
+        openPokemonModal(item) {
+            console.log(["Let's open this modal:", item])
+        }
     }
 }
 </script>

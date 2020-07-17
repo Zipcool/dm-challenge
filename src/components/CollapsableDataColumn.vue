@@ -6,18 +6,34 @@
                 data-toggle="collapse"
                 :data-target="'#' + id"
             >
-                {{ title }} ({{ valuesArray.length }})
+                {{ title }} ({{ itemsArray.length }})
             </button>
         </div>
         <div :id="id" class="collapse">
             <template
-                v-if="!isEmpty(valuesArray)"
+                v-if="!isEmpty(itemsArray)"
             >
                 <div
-                    v-for="(value, index) in valuesArray"
-                    :key="index"
+                    v-if="interactableData"
+                    class="interactable-data-group"
+                    :class="{ 'btn-group-vertical': interactableData }"
                 >
-                    <p>{{ value.name | handleName(nameSeparator) }}</p>
+                    <button
+                        v-for="(item, index) in itemsArray"
+                        :key="index"
+                        class="btn btn-outline-success"
+                        @click="$emit('data-item-clicked', item)"
+                    >
+                        {{ item.name | handleName(nameSeparator) }}
+                    </button>
+                </div>
+                <div v-else>
+                    <p
+                        v-for="(item, index) in itemsArray"
+                        :key="index"
+                    >
+                        {{ item.name | handleName(nameSeparator) }}
+                    </p>
                 </div>
             </template>
             <p v-else>{{ emptyMessage }}</p>
@@ -42,7 +58,7 @@ export default {
             type: String,
             default: "Nenhum valor encontrado"
         },
-        valuesArray: {
+        itemsArray: {
             type: Array,
             default() {
                 return []
@@ -51,6 +67,10 @@ export default {
         nameSeparator: {
             type: String,
             default: " "
+        },
+        interactableData: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -69,5 +89,9 @@ export default {
 <style lang="less" scoped>
 .category-button {
     width: 100%;
+}
+.interactable-data-group {
+    width: calc(100% - 10px);
+    margin: 0 5px;
 }
 </style>
