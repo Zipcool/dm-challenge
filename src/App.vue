@@ -1,5 +1,7 @@
 <template>
     <div id="app">
+        <h1>Pokémon - Delivery Much Challenge</h1>
+        <h4>por Marcos Righi Brasil</h4>
         <div id="nav">
             <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link>
@@ -28,5 +30,14 @@
             color: #42b983;
         }
     }
+}
+</style>
+
+<style lang="less" scoped>
+h1 {
+    margin-bottom: 10px;
+}
+h4 {
+    margin-top: 0;
 }
 </style>
