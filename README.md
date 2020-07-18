@@ -6,16 +6,15 @@ os Pokémons e outras informações disponíveis.
 Também foi implementado um modal que lista as principais informações de cada Pokémon, basta clicar no nome do Pokémon na listagem da geração.
 
 ## Bibliotecas e recursos utilizados
-* **VueJS** - framework base do projeto
-* Axios
-* Bootstrap
-* Lodash
-* ESLint
+* **Vue.js** - framework base do projeto
+* **Axios** - para requisições de API
+* **Bootstrap** - estilização do projeto
+* **ESLint** - padronização de código
 
 ## Executando o projeto
 **Pré-requisito:** [Node.js](https://nodejs.org/en/), necessário para poder executar comandos **npm**.
 
-Para executar o projeto localmente, primeiro, através de um terminal, vá até o diretório raiz onde o projeto foi clonado e execute o seguinte comando:
+Para executar o projeto localmente, primeiro vá através de um terminal até o diretório raiz onde o projeto foi clonado e execute o seguinte comando:
 ```
 npm install
 ```
